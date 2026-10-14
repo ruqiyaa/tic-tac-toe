@@ -1,6 +1,45 @@
+:root {
+  --bg-start: #667eea;
+  --bg-end: #764ba2;
+  --card: #591074;
+  --text: #dabde9;
+  --x-color: #ef476f;
+  --o-color: #118ab2;
+  --highlight: #ffd166;
+  --square-bg: #f1f3f9;
+  --square-hover: #e2e6f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+}
+
+
 .game {
   text-align: center;
-  font-family: sans-serif;
+  background: var(--card);
+  padding: 32px 36px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+h1{
+  margin: 0 0 8px;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  color: #e2e6f3;
 }
 
 .board{
@@ -14,43 +53,86 @@
   width: 150px;
   height: 150px;
   font-size: 2.5rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  background: var(--square-bg);
   cursor: pointer;
-  background-color: rgb(179, 152, 204);
+  transition: transform 0.15s, background-color 0.2s;
 }
 
 .square.X {
-  color: #e63946;
+  color: var(--x-color);
+  animation: pop 0.25s ease-out;
 
 }
 
 .square.O {
-  color: #1d70b8;
+  color: var(--o-color);
+  animation: pop 0.25s ease-out;
 }
 
 .square.highlight {
-  background-color: #ffe066 !important;
+  background-color: var(--highlight)!important;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
 }
 
 .square:hover {
-  background-color: rgb(79, 60, 96);
+  background: var(--square-hover);
+  transform: translateY(-3px);
+}
+
+.square:active{
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 .status {
   font-size: 1.2rem;
-  margin-bottom: 16px;
+  font-weight: 600;
+  margin: 0 0 20px;
+  min-height: 1.5em;
 }
 
 .restart {
-  margin-top: 20px;
+  margin: 24px 6px 0;
   padding: 10px 24px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   border: none;
-  border-radius: 6px;
-  background-color: #333;
-  color: white;
+  border-radius: 999px;
+  background-color: var(--text);
+  color: rgb(38, 4, 65);
+  transition: transform 0.15s, opacity 0.2s;
 }
 
 .restart:hover{
-  background-color: #555;
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.restart:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+
+}
+
+
+@media (max-width: 520px) {
+  .board { grid-template-columns: repeat(3, 80px); }
+  .square { width: 80px; height: 80px; font-size: 2.4rem; }
+  .game { padding: 24px 20px; }
 }
