@@ -1,0 +1,56 @@
+.game {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.board{
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  gap: 6px;
+  justify-content: center;
+}
+
+.square{
+  width: 150px;
+  height: 150px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  background-color: rgb(179, 152, 204);
+}
+
+.square.X {
+  color: #e63946;
+
+}
+
+.square.O {
+  color: #1d70b8;
+}
+
+.square.highlight {
+  background-color: #ffe066 !important;
+}
+
+.square:hover {
+  background-color: rgb(79, 60, 96);
+}
+
+.status {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.restart {
+  margin-top: 20px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #333;
+  color: white;
+}
+
+.restart:hover{
+  background-color: #555;
+}
